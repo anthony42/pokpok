@@ -31,9 +31,14 @@ private slots:
     void saveScreenshot();
     void shootScreen();
     void updateCheckBox();
+    void put_pixel_black();
+    void put_big_screen();
+    void put_small_screen();
+    void put_stack_player_1();
 
 private:
 
+    qint32 hashPixmap(QPixmap pix);
     void createOptionsGroupBox();
     void createButtonsLayout();
     QPushButton *createButton(const QString &text, QWidget *receiver, const char *member);
@@ -49,6 +54,7 @@ private:
     QPushButton *newScreenshotButton;
     QPushButton *saveScreenshotButton;
     QPushButton *quitScreenshotButton;
+    QPushButton *putPixelBlack;
 
     QVBoxLayout *mainLayout;
     QGridLayout *optionsGroupBoxLayout;

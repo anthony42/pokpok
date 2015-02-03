@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 //     w.show();
 
     Screenshot screenshot;
-    screenshot.print_color_pixel(50, 50);//coordone du pixel qu'on veut.
+    // screenshot.print_color_pixel(50, 50);//coordone du pixel qu'on veut.
     screenshot.show();
 
     return a.exec();

@@ -1,4 +1,16 @@
-prog pour cash
+
+
+QT:
+
+QImage scannedImage;
+....
+hocr_pix->n_channels	= scannedImage.depth() / 8;
+hocr_pix->height	= scannedImage.size().height();
+hocr_pix->width	= scannedImage.size().width();
+hocr_pix->rowstride	= scannedImage.bytesPerLine();
+hocr_pix->pixels	= scannedImage.bits();
+
+
 
 CLASS
 
@@ -193,4 +205,14 @@ deroulement river:
 			sinn (si joueur relance)
 				stop = 0;
 		index++;
+
+
+
+
+
+
+
+
+
+
 
