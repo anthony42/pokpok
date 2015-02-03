@@ -1,7 +1,9 @@
+
 #include <QtWidgets>
 
 #include "screenshot.hpp"
 
+/*initialise les bouton puis prend un screenshot*/
 Screenshot::Screenshot()
 {
     screenshotLabel = new QLabel;
@@ -22,9 +24,10 @@ Screenshot::Screenshot()
     delaySpinBox->setValue(5);
 
     setWindowTitle(tr("Screenshot"));
-    resize(300, 200);
+    resize(400, 300);
 }
 
+/*pas encor compris*/
 void Screenshot::resizeEvent(QResizeEvent * /* event */)
 {
     QSize scaledSize = originalPixmap.size();
@@ -33,6 +36,8 @@ void Screenshot::resizeEvent(QResizeEvent * /* event */)
         updateScreenshotLabel();
 }
 
+/*passe le bouton newScreenButton a true
+ puis effectue le callback du bouton (shootscreen())*/
 void Screenshot::newScreenshot()
 {
     if (hideThisWindowCheckBox->isChecked())
@@ -42,6 +47,7 @@ void Screenshot::newScreenshot()
     QTimer::singleShot(delaySpinBox->value() * 1000, this, SLOT(shootScreen()));
 }
 
+/*sauvegarde le dernier screenshot pris*/
 void Screenshot::saveScreenshot()
 {
     QString format = "png";
@@ -55,6 +61,8 @@ void Screenshot::saveScreenshot()
         originalPixmap.save(fileName, format.toLatin1().constData());
 }
 
+/*prend le screenshot. Prend un screenshot du bureau ou prend un image
+et l'enregistre dans originalPixmap*/
 void Screenshot::shootScreen()
 {
     if (delaySpinBox->value() != 0)
@@ -63,12 +71,12 @@ void Screenshot::shootScreen()
                                 // on embedded devices.
    
     /*recuperation du bureau. ajouter id de la fenetre dans winId, pour recup uniquement celle la*/
-    // QScreen *screen = QGuiApplication::primaryScreen();
-    // if (screen)
-    //     originalPixmap = screen->grabWindow(QApplication::desktop()->winId());//on peut rqjouter pos x, pos y, width, height
+    QScreen *screen = QGuiApplication::primaryScreen();
+    if (screen)
+        originalPixmap = screen->grabWindow(QApplication::desktop()->winId());//on peut rqjouter pos x, pos y, width, height
     
     /*recuperer image*/
-        originalPixmap = QPixmap("table_grande2.png");//mettre l'image dans build
+        // originalPixmap = QPixmap("table_grande2.png");//mettre l'image dans build
     
     updateScreenshotLabel();
 
@@ -77,6 +85,7 @@ void Screenshot::shootScreen()
         show();
 }
 
+/*permet de hide (fonctionne pas encor, oup as compris :D)*/
 void Screenshot::updateCheckBox()
 {
     if (delaySpinBox->value() == 0) {
@@ -87,6 +96,7 @@ void Screenshot::updateCheckBox()
     }
 }
 
+/*affiche l'image et creer le bouton hide*/
 void Screenshot::createOptionsGroupBox()
 {
     optionsGroupBox = new QGroupBox(tr("Options"));
@@ -107,6 +117,7 @@ void Screenshot::createOptionsGroupBox()
     optionsGroupBox->setLayout(optionsGroupBoxLayout);
 }
 
+/*creer les bouton new screenshot, sava, print pixel et quit*/
 void Screenshot::createButtonsLayout()
 {
     newScreenshotButton = createButton(tr("New Screenshot"), this, SLOT(newScreenshot()));
@@ -122,6 +133,11 @@ void Screenshot::createButtonsLayout()
     buttonsLayout->addWidget(quitScreenshotButton);
 }
 
+/*creer le bouton pass en parman
+text -> nom du bouton
+receiver -> this
+member -> SLOT de lq fonction "callback"
+*/
 QPushButton *Screenshot::createButton(const QString &text, QWidget *receiver,
                                       const char *member)
 {
@@ -130,6 +146,7 @@ QPushButton *Screenshot::createButton(const QString &text, QWidget *receiver,
     return button;
 }
 
+/* ??? */
 void Screenshot::updateScreenshotLabel()
 {
     screenshotLabel->setPixmap(originalPixmap.scaled(screenshotLabel->size(),
@@ -137,6 +154,7 @@ void Screenshot::updateScreenshotLabel()
                                                      Qt::SmoothTransformation));
 }
 
+/*print la couleur du pixel passer en param*/
 void Screenshot::print_color_pixel(int x, int y){
     QImage img = this->originalPixmap.toImage();
     QColor color = img.pixel(x, y);
@@ -146,6 +164,7 @@ void Screenshot::print_color_pixel(int x, int y){
     std::cout << " green : " << color.green() << std::endl;
 }
 
+/*print la couleur du pixel mis dans le QColor*/
 void Screenshot::print_color_pixel2(){
     QImage img = this->originalPixmap.toImage();
     QColor color = img.pixel(150, 150);
