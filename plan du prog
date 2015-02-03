@@ -1,0 +1,196 @@
+prog pour cash
+
+CLASS
+
+paquet de carte  :
+	methode :
+		- constructeur -> initialise les 52 cartes
+		- destructeur -> delete les carte
+		- init_paquet -> remet les 52 cartes dans le paquet, remet nb de carte a 52
+		- del_card() -> suprime cette carte du paquet (demander quel carte), enleve 1 au nombre de carte dans le paquet
+		- init nb carte -> enleve (nb_de_joueur * 2) au nombre de carte
+
+	variable
+		- paque de carte (string[52])
+		- nombre de carte dans le paquet (short)
+
+joueur :
+	methode :
+		- constructeur -> demande pseudo, nombre de jeton et init els variable
+		- action -> check, fold, call, raise
+
+	variable :
+		- pseudo (string)
+		- nombre de jeton (float)
+		- actif (bool -> false si joueur coucher, sinn true)
+
+table :
+	methode :
+		- init parti -> initialise la viariable board a null, le pot a 0
+		- add board -> stock la carte a ajouter sur le board
+		- modif pot(float) -> modif le pot a la nouvel valeur
+		- create table (short) -> initialise le nb max de joueur
+		- create new player -> retour une nouvel instance de joueur
+		- fold player -> decrement nb de joueur de 1;
+
+	variable :
+		- board (string[5] -> contient les cartes du board)
+		- pot (float)
+		- nombre max de joueur a la table (short)
+		- nombre de joueur restant
+		- tableau de joueur (vector<joueur>)
+
+
+statistique :
+	methode :
+		- cote du pot(float, float) -> retourne l'action a effectuer .calcul la cot du pot. 1er param: valeur du pot, 2param valeur de la relance (a verifier ce qu'il faut, peut etre int pour l'agressivite)
+		- "cote" pres flop (int) -> return bool. true si on doit jouer siunn false. 1er param correspond a large serre (0 le plus large 10 le plus serre)//initialiser a 5 dans le constructeur pour le moment
+		- cb raise (float) -> retourne cb on doit raise. 1er param correspond la cote
+	variable :
+
+
+DEROULEMENT
+donee a recup :
+	- nombre max de joueur a la table (table de 6 ou 9)//recupere au depart
+	- blind//recuperer au depart
+	- pseudo des joueur//recuper a chaque creation de joeuur
+	- tapis de depart de chaque joueur//recuper a chaque creation de joueur
+
+definir touche pour commencer a jouer (fin de recup des donner)
+definir touche pour arreter a jouer (quitte le prog)
+
+
+deroulement:
+	creer instance paquet de carte;
+	creer instance de table;
+	recupere les donne de depart pour remplir table;
+
+	while (i < table->nb max de joueur)
+		table->tableau de joueur[i] = creer instance joueur ( x => max de joueur );
+
+	while (42)
+		deroulement d'une partie(table, paquet de crate);
+		table->init partie();
+
+
+deroulement d'une partie(table, paquet de carte):
+
+	table->nombre de joueur restant = deroulement pre flop;//retourne le nombre de joueur restant
+	if (table->nombre de joueur restant == 1)
+		return ;
+	
+	table->nombre de joueur restant = deroulement au flop;//retourne le nombre de joueur restant
+	if (table->nombre de joueur restant == 1)
+		return ;
+
+	table->nombre de joueur restant = deroulement au turn;//retourne le nombre de joueur restant
+	if (table->nombre de joueur restant == 1)
+		return ;
+	
+	deroulement a la river;
+
+
+deroulement pre flop:
+	short	stop = 0;
+	short	index;//index pour tableau joueur
+	statistique st;
+
+	while (stop < table->nb de joueur);
+		si joueur c moi
+			calcul statistique si je doit jouer;
+		sinn si table->joueur[index]->actif == true
+			demander l'action qu'il effectue;
+			ajouter au pot;
+			si joueur se couche
+				passe joueur actif->actif a false;
+				table->fold player();
+			sinn si joueur suit
+				stop++;
+			sinn (si joueur relance)
+				stop = 0;
+		index++;
+
+
+deroulement flop:
+
+	card = recupere 1ere carte du flop;
+	table->add board(card);
+	paquet de carte->del_carte(card);
+
+	card = recupere 2eme carte du flop;
+	table->add board(card);
+	paquet de carte->del_carte(card);
+
+	card = recupere 3eme carte du flop;
+	table->add board(card);
+	paquet de carte->del_carte(card);
+
+	short 		index;
+	short 		stop = 0;
+	statistique	st;
+
+	while (stop < table->nb de joueur);
+		si joueur c moi
+			calcul statistique si je doit jouer;
+		sinn si table->joueur[index]->actif == true
+			demander l'action qu'il effectue;
+			ajouter au pot;
+			si joueur se couche
+				passe joueur actif->actif a false;
+				table->fold player();
+			sinn si joueur suit
+				stop++;
+			sinn (si joueur relance)
+				stop = 0;
+		index++;
+
+
+deroulement turn:
+	card = recupere carte de la turn
+	table->add board(card)
+	paquet de carte->del_carte(card);
+
+	short 		index;
+	short 		stop = 0;
+	statistique	st;
+
+	while (stop < table->nb de joueur);
+		si joueur c moi
+			calcul statistique si je doit jouer;
+		sinn si table->joueur[index]->actif == true
+			demander l'action qu'il effectue;
+			ajouter au pot;
+			si joueur se couche
+				passe joueur actif->actif a false;
+				table->fold player();
+			sinn si joueur suit
+				stop++;
+			sinn (si joueur relance)
+				stop = 0;
+		index++;
+
+
+deroulement river:
+	card = recupere carte de la river
+	table->add board(card)
+	paquet de carte->del_carte(card);
+
+	short 		index;
+	short 		stop = 0;
+	statistique	st;
+
+	while (stop < table->nb de joueur);
+		si joueur c moi
+			calcul statistique si je doit jouer;
+		sinn si table->joueur[index]->actif == true
+			demander l'action qu'il effectue;
+			ajouter au pot;
+			si joueur se couche
+				passe joueur actif->actif a false;
+				table->fold player();
+			sinn si joueur suit
+				stop++;
+			sinn (si joueur relance)
+				stop = 0;
+		index++;
+
