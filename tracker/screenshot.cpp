@@ -68,27 +68,224 @@ void Screenshot::newScreenshot()
     QTimer::singleShot(delaySpinBox->value() * 1000, this, SLOT(shootScreen()));
 }
 
-void Screenshot::put_stack_player_1(){
+// void Screenshot::put_stack_player_1(){
+//     QPixmap pixmap = originalPixmap;
+//     QImage  img_tmp = pixmap.toImage();
+//     QImage  img;
+
+//     QRgb    value;
+//     value = qRgb(255, 0, 0);
+//     int x = img_tmp.size().width() * 0.24428;
+//     int y = (img_tmp.size().height()-28) * 0.68411;
+//     int tmp_x = x;
+//     int tmp_y = y+28;
+//     while (x < tmp_x+80){
+//         y = tmp_y;
+//         while (y < tmp_y+22){
+//             img_tmp.setPixel(x, y, value);
+//             y++;
+//         }
+//         x++; 
+//     }
+
+//     pixmap = pixmap.fromImage(img_tmp);
+//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+//     originalPixmap = QPixmap(pixmap);
+//     updateScreenshotLabel();
+//     if (hideThisWindowCheckBox->isChecked())
+//         show();
+// }
+
+// void Screenshot::put_stack_player_1(){//player 2
+//     QPixmap pixmap = originalPixmap;
+//     QImage  img_tmp = pixmap.toImage();
+//     QImage  img;
+
+//     QRgb    value;
+//     value = qRgb(255, 0, 0);
+//     int x = img_tmp.size().width() * 0.088357;
+//     int y = (img_tmp.size().height()-28) * 0.49088;
+//     int tmp_x = x;
+//     int tmp_y = y+28;
+//     while (x < tmp_x+80){
+//         y = tmp_y;
+//         while (y < tmp_y+22){
+//             img_tmp.setPixel(x, y, value);
+//             y++;
+//         }
+//         x++; 
+//     }
+
+//     pixmap = pixmap.fromImage(img_tmp);
+//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+//     originalPixmap = QPixmap(pixmap);
+//     updateScreenshotLabel();
+//     if (hideThisWindowCheckBox->isChecked())
+//         show();
+// }
+
+// void Screenshot::put_stack_player_1(){//player 3
+//     QPixmap pixmap = originalPixmap;
+//     QImage  img_tmp = pixmap.toImage();
+//     QImage  img;
+
+//     QRgb    value;
+//     value = qRgb(255, 0, 0);
+//     int x = img_tmp.size().width() * 0.088357;
+//     int y = (img_tmp.size().height()-28) * 0.28495;
+//     int tmp_x = x;
+//     int tmp_y = y+28;
+//     while (x < tmp_x+80){
+//         y = tmp_y;
+//         while (y < tmp_y+22){
+//             img_tmp.setPixel(x, y, value);
+//             y++;
+//         }
+//         x++; 
+//     }
+
+//     pixmap = pixmap.fromImage(img_tmp);
+//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+//     originalPixmap = QPixmap(pixmap);
+//     updateScreenshotLabel();
+//     if (hideThisWindowCheckBox->isChecked())
+//         show();
+// }
+
+// void Screenshot::put_stack_player_1(){//player 4
+//     QPixmap pixmap = originalPixmap;
+//     QImage  img_tmp = pixmap.toImage();
+//     QImage  img;
+
+//     QRgb    value;
+//     value = qRgb(255, 0, 0);
+//     int x = img_tmp.size().width() * 0.27651;
+//     int y = (img_tmp.size().height()-28) * 0.1194;
+//     int tmp_x = x;
+//     int tmp_y = y+28;
+//     while (x < tmp_x+80){
+//         y = tmp_y;
+//         while (y < tmp_y+22){
+//             img_tmp.setPixel(x, y, value);
+//             y++;
+//         }
+//         x++; 
+//     }
+
+//     pixmap = pixmap.fromImage(img_tmp);
+//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+//     originalPixmap = QPixmap(pixmap);
+//     updateScreenshotLabel();
+//     if (hideThisWindowCheckBox->isChecked())
+//         show();
+// }
+
+// void Screenshot::put_stack_player_1(){//player 5
+//     QPixmap pixmap = originalPixmap;
+//     QImage  img_tmp = pixmap.toImage();
+//     QImage  img;
+
+//     QRgb    value;
+//     value = qRgb(255, 0, 0);
+//     int x = img_tmp.size().width() * 0.63722;
+//     int y = (img_tmp.size().height()-28) * 0.1194;
+//     int tmp_x = x;
+//     int tmp_y = y+28;
+//     while (x < tmp_x+80){
+//         y = tmp_y;
+//         while (y < tmp_y+22){
+//             img_tmp.setPixel(x, y, value);
+//             y++;
+//         }
+//         x++; 
+//     }
+
+//     pixmap = pixmap.fromImage(img_tmp);
+//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+//     originalPixmap = QPixmap(pixmap);
+//     updateScreenshotLabel();
+//     if (hideThisWindowCheckBox->isChecked())
+//         show();
+// }
+
+// void Screenshot::put_stack_player_1(){//player 6
+//     QPixmap pixmap = originalPixmap;
+//     QImage  img_tmp = pixmap.toImage();
+//     QImage  img;
+
+//     QRgb    value;
+//     value = qRgb(255, 0, 0);
+//     int x = img_tmp.size().width() * 0.82744;
+//     int y = (img_tmp.size().height()-28) * 0.28495;
+//     int tmp_x = x;
+//     int tmp_y = y+28;
+//     while (x < tmp_x+80){
+//         y = tmp_y;
+//         while (y < tmp_y+22){
+//             img_tmp.setPixel(x, y, value);
+//             y++;
+//         }
+//         x++; 
+//     }
+
+//     pixmap = pixmap.fromImage(img_tmp);
+//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+//     originalPixmap = QPixmap(pixmap);
+//     updateScreenshotLabel();
+//     if (hideThisWindowCheckBox->isChecked())
+//         show();
+// }
+
+// void Screenshot::put_stack_player_1(){//player 7
+//     QPixmap pixmap = originalPixmap;
+//     QImage  img_tmp = pixmap.toImage();
+//     QImage  img;
+
+//     QRgb    value;
+//     value = qRgb(255, 0, 0);
+//     int x = img_tmp.size().width() * 0.82744;
+//     int y = (img_tmp.size().height()-28) * 0.49088;
+//     int tmp_x = x;
+//     int tmp_y = y+28;
+//     while (x < tmp_x+80){
+//         y = tmp_y;
+//         while (y < tmp_y+22){
+//             img_tmp.setPixel(x, y, value);
+//             y++;
+//         }
+//         x++; 
+//     }
+
+//     pixmap = pixmap.fromImage(img_tmp);
+//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+//     originalPixmap = QPixmap(pixmap);
+//     updateScreenshotLabel();
+//     if (hideThisWindowCheckBox->isChecked())
+//         show();
+// }
+
+void Screenshot::put_stack_player_1(){//player 8
     QPixmap pixmap = originalPixmap;
     QImage  img_tmp = pixmap.toImage();
-    // QImage  img = img_tmp.copy();
+    QImage  img;
 
     QRgb    value;
     value = qRgb(255, 0, 0);
-    int x = 645;
-    int y = 481;
-    int tmp_x = x;
-    int tmp_y = y;
-    while (x < tmp_x+80){
-        y = tmp_y;
-        while (y < tmp_y+22){
-            img_tmp.setPixel(x, y, value);
-            y++;
-        }
-        x++; 
-    }
+    int x = img_tmp.size().width() * 0.67048;
+    int y = (img_tmp.size().height()-28) * 0.68411;
+    // int tmp_x = x;
+    // int tmp_y = y+28;
+    // while (x < tmp_x+80){
+    //     y = tmp_y;
+    //     while (y < tmp_y+22){
+    //         img_tmp.setPixel(x, y, value);
+    //         y++;
+    //     }
+    //     x++; 
+    // }
 
-    pixmap = pixmap.fromImage(img_tmp);
+    // pixmap = pixmap.fromImage(img_tmp);
+    pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, img_tmp.size().width() * 0.08316, img_tmp.size().height() * 0.0319303));
     originalPixmap = QPixmap(pixmap);
     updateScreenshotLabel();
     if (hideThisWindowCheckBox->isChecked())

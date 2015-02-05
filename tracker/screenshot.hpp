@@ -1,6 +1,8 @@
 #ifndef SCREENSHOT_H
 #define SCREENSHOT_H
 
+#include "../tesseract-mingw-master/include/leptonica/allheaders.h"
+#include "../tesseract-mingw-master/include/tesseract/apitypes.h"
 #include <iostream>
 #include <QPixmap>
 #include <QWidget>
