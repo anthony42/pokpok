@@ -37,6 +37,13 @@ private slots:
     void put_big_screen();
     void put_small_screen();
     void put_stack_player_1();
+    void put_stack_player_2();
+    void put_stack_player_3();
+    void put_stack_player_4();
+    void put_stack_player_5();
+    void put_stack_player_6();
+    void put_stack_player_7();
+    void put_stack_player_8();
 
 private:
 
@@ -45,6 +52,9 @@ private:
     void createButtonsLayout();
     QPushButton *createButton(const QString &text, QWidget *receiver, const char *member);
     void updateScreenshotLabel();
+    QPixmap color_letter(QPixmap pixmap);
+    QPixmap take_letter(QPixmap pixmap, int &x);
+    char    take_number(QPixmap letre);
 
     QPixmap originalPixmap;
 

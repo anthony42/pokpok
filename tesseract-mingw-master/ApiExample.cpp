@@ -20,7 +20,7 @@
 **********************************************************************/
 
 #include "include/tesseract/baseapi.h"
-#include <leptonica/allheaders.h>
+#include "include/leptonica/allheaders.h"
 
 int main(int argc, char *argv[])
 {

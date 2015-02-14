@@ -68,210 +68,14 @@ void Screenshot::newScreenshot()
     QTimer::singleShot(delaySpinBox->value() * 1000, this, SLOT(shootScreen()));
 }
 
-// void Screenshot::put_stack_player_1(){
-//     QPixmap pixmap = originalPixmap;
-//     QImage  img_tmp = pixmap.toImage();
-//     QImage  img;
-
-//     QRgb    value;
-//     value = qRgb(255, 0, 0);
-//     int x = img_tmp.size().width() * 0.24428;
-//     int y = (img_tmp.size().height()-28) * 0.68411;
-//     int tmp_x = x;
-//     int tmp_y = y+28;
-//     while (x < tmp_x+80){
-//         y = tmp_y;
-//         while (y < tmp_y+22){
-//             img_tmp.setPixel(x, y, value);
-//             y++;
-//         }
-//         x++; 
-//     }
-
-//     pixmap = pixmap.fromImage(img_tmp);
-//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
-//     originalPixmap = QPixmap(pixmap);
-//     updateScreenshotLabel();
-//     if (hideThisWindowCheckBox->isChecked())
-//         show();
-// }
-
-// void Screenshot::put_stack_player_1(){//player 2
-//     QPixmap pixmap = originalPixmap;
-//     QImage  img_tmp = pixmap.toImage();
-//     QImage  img;
-
-//     QRgb    value;
-//     value = qRgb(255, 0, 0);
-//     int x = img_tmp.size().width() * 0.088357;
-//     int y = (img_tmp.size().height()-28) * 0.49088;
-//     int tmp_x = x;
-//     int tmp_y = y+28;
-//     while (x < tmp_x+80){
-//         y = tmp_y;
-//         while (y < tmp_y+22){
-//             img_tmp.setPixel(x, y, value);
-//             y++;
-//         }
-//         x++; 
-//     }
-
-//     pixmap = pixmap.fromImage(img_tmp);
-//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
-//     originalPixmap = QPixmap(pixmap);
-//     updateScreenshotLabel();
-//     if (hideThisWindowCheckBox->isChecked())
-//         show();
-// }
-
-// void Screenshot::put_stack_player_1(){//player 3
-//     QPixmap pixmap = originalPixmap;
-//     QImage  img_tmp = pixmap.toImage();
-//     QImage  img;
-
-//     QRgb    value;
-//     value = qRgb(255, 0, 0);
-//     int x = img_tmp.size().width() * 0.088357;
-//     int y = (img_tmp.size().height()-28) * 0.28495;
-//     int tmp_x = x;
-//     int tmp_y = y+28;
-//     while (x < tmp_x+80){
-//         y = tmp_y;
-//         while (y < tmp_y+22){
-//             img_tmp.setPixel(x, y, value);
-//             y++;
-//         }
-//         x++; 
-//     }
-
-//     pixmap = pixmap.fromImage(img_tmp);
-//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
-//     originalPixmap = QPixmap(pixmap);
-//     updateScreenshotLabel();
-//     if (hideThisWindowCheckBox->isChecked())
-//         show();
-// }
-
-// void Screenshot::put_stack_player_1(){//player 4
-//     QPixmap pixmap = originalPixmap;
-//     QImage  img_tmp = pixmap.toImage();
-//     QImage  img;
-
-//     QRgb    value;
-//     value = qRgb(255, 0, 0);
-//     int x = img_tmp.size().width() * 0.27651;
-//     int y = (img_tmp.size().height()-28) * 0.1194;
-//     int tmp_x = x;
-//     int tmp_y = y+28;
-//     while (x < tmp_x+80){
-//         y = tmp_y;
-//         while (y < tmp_y+22){
-//             img_tmp.setPixel(x, y, value);
-//             y++;
-//         }
-//         x++; 
-//     }
-
-//     pixmap = pixmap.fromImage(img_tmp);
-//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
-//     originalPixmap = QPixmap(pixmap);
-//     updateScreenshotLabel();
-//     if (hideThisWindowCheckBox->isChecked())
-//         show();
-// }
-
-// void Screenshot::put_stack_player_1(){//player 5
-//     QPixmap pixmap = originalPixmap;
-//     QImage  img_tmp = pixmap.toImage();
-//     QImage  img;
-
-//     QRgb    value;
-//     value = qRgb(255, 0, 0);
-//     int x = img_tmp.size().width() * 0.63722;
-//     int y = (img_tmp.size().height()-28) * 0.1194;
-//     int tmp_x = x;
-//     int tmp_y = y+28;
-//     while (x < tmp_x+80){
-//         y = tmp_y;
-//         while (y < tmp_y+22){
-//             img_tmp.setPixel(x, y, value);
-//             y++;
-//         }
-//         x++; 
-//     }
-
-//     pixmap = pixmap.fromImage(img_tmp);
-//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
-//     originalPixmap = QPixmap(pixmap);
-//     updateScreenshotLabel();
-//     if (hideThisWindowCheckBox->isChecked())
-//         show();
-// }
-
-// void Screenshot::put_stack_player_1(){//player 6
-//     QPixmap pixmap = originalPixmap;
-//     QImage  img_tmp = pixmap.toImage();
-//     QImage  img;
-
-//     QRgb    value;
-//     value = qRgb(255, 0, 0);
-//     int x = img_tmp.size().width() * 0.82744;
-//     int y = (img_tmp.size().height()-28) * 0.28495;
-//     int tmp_x = x;
-//     int tmp_y = y+28;
-//     while (x < tmp_x+80){
-//         y = tmp_y;
-//         while (y < tmp_y+22){
-//             img_tmp.setPixel(x, y, value);
-//             y++;
-//         }
-//         x++; 
-//     }
-
-//     pixmap = pixmap.fromImage(img_tmp);
-//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
-//     originalPixmap = QPixmap(pixmap);
-//     updateScreenshotLabel();
-//     if (hideThisWindowCheckBox->isChecked())
-//         show();
-// }
-
-// void Screenshot::put_stack_player_1(){//player 7
-//     QPixmap pixmap = originalPixmap;
-//     QImage  img_tmp = pixmap.toImage();
-//     QImage  img;
-
-//     QRgb    value;
-//     value = qRgb(255, 0, 0);
-//     int x = img_tmp.size().width() * 0.82744;
-//     int y = (img_tmp.size().height()-28) * 0.49088;
-//     int tmp_x = x;
-//     int tmp_y = y+28;
-//     while (x < tmp_x+80){
-//         y = tmp_y;
-//         while (y < tmp_y+22){
-//             img_tmp.setPixel(x, y, value);
-//             y++;
-//         }
-//         x++; 
-//     }
-
-//     pixmap = pixmap.fromImage(img_tmp);
-//     // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
-//     originalPixmap = QPixmap(pixmap);
-//     updateScreenshotLabel();
-//     if (hideThisWindowCheckBox->isChecked())
-//         show();
-// }
-
-void Screenshot::put_stack_player_1(){//player 8
+void Screenshot::put_stack_player_1(){
     QPixmap pixmap = originalPixmap;
     QImage  img_tmp = pixmap.toImage();
     QImage  img;
 
-    QRgb    value;
-    value = qRgb(255, 0, 0);
-    int x = img_tmp.size().width() * 0.67048;
+    // QRgb    value;
+    // value = qRgb(255, 0, 0);
+    int x = img_tmp.size().width() * 0.24428;
     int y = (img_tmp.size().height()-28) * 0.68411;
     // int tmp_x = x;
     // int tmp_y = y+28;
@@ -285,14 +89,379 @@ void Screenshot::put_stack_player_1(){//player 8
     // }
 
     // pixmap = pixmap.fromImage(img_tmp);
+    // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
     pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, img_tmp.size().width() * 0.08316, img_tmp.size().height() * 0.0319303));
+    pixmap = color_letter(pixmap);
+
     originalPixmap = QPixmap(pixmap);
     updateScreenshotLabel();
     if (hideThisWindowCheckBox->isChecked())
         show();
 }
 
-/* affiche un carre de 10*10 pixel noir */
+void Screenshot::put_stack_player_2(){//player 2
+    QPixmap pixmap = originalPixmap;
+    QImage  img_tmp = pixmap.toImage();
+    QImage  img;
+
+    // QRgb    value;
+    // value = qRgb(255, 0, 0);
+    int x = img_tmp.size().width() * 0.088357;
+    int y = (img_tmp.size().height()-28) * 0.49088;
+    // int tmp_x = x;
+    // int tmp_y = y+28;
+    // while (x < tmp_x+80){
+    //     y = tmp_y;
+    //     while (y < tmp_y+22){
+    //         img_tmp.setPixel(x, y, value);
+    //         y++;
+    //     }
+    //     x++; 
+    // }
+
+    // pixmap = pixmap.fromImage(img_tmp);
+    // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+    pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, img_tmp.size().width() * 0.08316, img_tmp.size().height() * 0.0319303));
+    pixmap = color_letter(pixmap);
+
+    originalPixmap = QPixmap(pixmap);
+    updateScreenshotLabel();
+    if (hideThisWindowCheckBox->isChecked())
+        show();
+}
+
+void Screenshot::put_stack_player_3(){//player 3
+    QPixmap pixmap = originalPixmap;
+    QImage  img_tmp = pixmap.toImage();
+    QImage  img;
+
+    // QRgb    value;
+    // value = qRgb(255, 0, 0);
+    int x = img_tmp.size().width() * 0.088357;
+    int y = (img_tmp.size().height()-28) * 0.28495;
+    // int tmp_x = x;
+    // int tmp_y = y+28;
+    // while (x < tmp_x+80){
+    //     y = tmp_y;
+    //     while (y < tmp_y+22){
+    //         img_tmp.setPixel(x, y, value);
+    //         y++;
+    //     }
+    //     x++; 
+    // }
+
+    // pixmap = pixmap.fromImage(img_tmp);
+    // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+    pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, img_tmp.size().width() * 0.08316, img_tmp.size().height() * 0.0319303));
+    pixmap = color_letter(pixmap);
+
+    originalPixmap = QPixmap(pixmap);
+    updateScreenshotLabel();
+    if (hideThisWindowCheckBox->isChecked())
+        show();
+}
+
+void Screenshot::put_stack_player_4(){//player 4
+    QPixmap pixmap = originalPixmap;
+    QImage  img_tmp = pixmap.toImage();
+    QImage  img;
+
+    // QRgb    value;
+    // value = qRgb(255, 0, 0);
+    int x = img_tmp.size().width() * 0.27651;
+    int y = (img_tmp.size().height()-28) * 0.1194;
+    // int tmp_x = x;
+    // int tmp_y = y+28;
+    // while (x < tmp_x+80){
+    //     y = tmp_y;
+    //     while (y < tmp_y+22){
+    //         img_tmp.setPixel(x, y, value);
+    //         y++;
+    //     }
+    //     x++; 
+    // }
+
+    // pixmap = pixmap.fromImage(img_tmp);
+    // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+    pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, img_tmp.size().width() * 0.08316, img_tmp.size().height() * 0.0319303));
+    pixmap = color_letter(pixmap);
+
+    originalPixmap = QPixmap(pixmap);
+    updateScreenshotLabel();
+    if (hideThisWindowCheckBox->isChecked())
+        show();
+}
+
+void Screenshot::put_stack_player_5(){//player 5
+    QPixmap pixmap = originalPixmap;
+    QImage  img_tmp = pixmap.toImage();
+    QImage  img;
+
+    // QRgb    value;
+    // value = qRgb(255, 0, 0);
+    int x = img_tmp.size().width() * 0.63722;
+    int y = (img_tmp.size().height()-28) * 0.1194;
+    // int tmp_x = x;
+    // int tmp_y = y+28;
+    // while (x < tmp_x+80){
+    //     y = tmp_y;
+    //     while (y < tmp_y+22){
+    //         img_tmp.setPixel(x, y, value);
+    //         y++;
+    //     }
+    //     x++; 
+    // }
+
+    // pixmap = pixmap.fromImage(img_tmp);
+    // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+    pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, img_tmp.size().width() * 0.08316, img_tmp.size().height() * 0.0319303));
+    pixmap = color_letter(pixmap);
+
+    originalPixmap = QPixmap(pixmap);
+    updateScreenshotLabel();
+    if (hideThisWindowCheckBox->isChecked())
+        show();
+}
+
+void Screenshot::put_stack_player_6(){//player 6
+    QPixmap pixmap = originalPixmap;
+    QImage  img_tmp = pixmap.toImage();
+    QImage  img;
+
+    // QRgb    value;
+    // value = qRgb(255, 0, 0);
+    int x = img_tmp.size().width() * 0.82744;
+    int y = (img_tmp.size().height()-28) * 0.28495;
+    // int tmp_x = x;
+    // int tmp_y = y+28;
+    // while (x < tmp_x+80){
+    //     y = tmp_y;
+    //     while (y < tmp_y+22){
+    //         img_tmp.setPixel(x, y, value);
+    //         y++;
+    //     }
+    //     x++; 
+    // }
+
+    // pixmap = pixmap.fromImage(img_tmp);
+    // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+
+    pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, img_tmp.size().width() * 0.08316, img_tmp.size().height() * 0.0319303));
+    pixmap = color_letter(pixmap);
+
+    originalPixmap = QPixmap(pixmap);
+    updateScreenshotLabel();
+    if (hideThisWindowCheckBox->isChecked())
+        show();
+}
+
+void Screenshot::put_stack_player_7(){//player 7
+    QPixmap pixmap = originalPixmap;
+    QImage  img_tmp = pixmap.toImage();
+    QImage  img;
+
+    // QRgb    value;
+    // value = qRgb(255, 0, 0);
+    int x = img_tmp.size().width() * 0.82744;
+    int y = (img_tmp.size().height()-28) * 0.49088;
+    // int tmp_x = x;
+    // int tmp_y = y+28;
+    // while (x < tmp_x+80){
+    //     y = tmp_y;
+    //     while (y < tmp_y+22){
+    //         img_tmp.setPixel(x, y, value);
+    //         y++;
+    //     }
+    //     x++; 
+    // }
+
+    // pixmap = pixmap.fromImage(img_tmp);
+    // pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, 80, 22));
+    pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, img_tmp.size().width() * 0.08316, img_tmp.size().height() * 0.0319303));
+    pixmap = color_letter(pixmap);
+
+    originalPixmap = QPixmap(pixmap);
+    updateScreenshotLabel();
+    if (hideThisWindowCheckBox->isChecked())
+        show();
+}
+
+void Screenshot::put_stack_player_8(){//player 8
+    QPixmap pixmap = originalPixmap;
+    QImage  img_tmp = pixmap.toImage();
+    QImage  img;
+
+    // QRgb    value;
+    // value = qRgb(255, 0, 0);
+    int x = img_tmp.size().width() * 0.67048;
+    int y = (img_tmp.size().height()-28) * 0.68411;
+    // int tmp_x = x;
+    // int tmp_y = y+28;
+    // while (x < tmp_x+80){
+    //     y = tmp_y;
+    //     while (y < tmp_y+22){
+    //         img_tmp.setPixel(x, y, value);
+    //         y++;
+    //     }
+    //     x++; 
+    // }
+    
+    // pixmap = pixmap.fromImage(img_tmp);
+    pixmap = pixmap.fromImage(img_tmp.copy(x, y+28, img_tmp.size().width() * 0.08316, img_tmp.size().height() * 0.0319303));
+    pixmap = color_letter(pixmap);
+
+    originalPixmap = QPixmap(pixmap);
+    updateScreenshotLabel();
+    if (hideThisWindowCheckBox->isChecked())
+        show();
+}
+
+char    Screenshot::take_number(QPixmap letre){
+    QColor color;
+    QImage img = letre.toImage();
+    int height = img.size().height()-1;
+    int width = img.size().width()-1;
+
+    if (height < 7)
+        return ',';
+    color = img.pixel(width, 0);//pixel en haut a droite
+    // std::cout << " 1 5 7 red : " << color.red() << " black: " << color.black() << std::endl;
+    if (color.black() < color.red()){//possibiliter 1 5 7
+        color = img.pixel(width, height);//en bas a droite
+        // std::cout << " 1 red : " << color.red() << " black: " << color.black() << std::endl;
+        if (color.black() < color.red()){
+            return '1';
+        }
+        color = img.pixel(0, height-1);//en bas a gauche remonter de 1 px
+        // std::cout << " 5 7 red : " << color.red() << " black: " << color.black() << std::endl;
+        if (color.black() < color.red()){
+            return '5';
+        }
+        else
+            return '7';
+    }
+    color = img.pixel(width, height);//en bas a droite
+    // std::cout << " 2 red : " << color.red() << " black: " << color.black() << std::endl;
+    if (color.black() < color.red()){
+        return '2';
+    }
+    color = img.pixel(width/2, (height/2) -2);
+    // std::cout << " 8 3 4 red : " << color.red() << " black: " << color.black() << std::endl;
+    if (color.black() < color.red()){
+        color = img.pixel(0, 1);
+        // std::cout << " 8 3 red : " << color.red() << " black: " << color.black() << std::endl;
+        if (color.black() > color.red()){
+            return '4';
+        }
+    }
+    color = img.pixel(width, 4);
+    // std::cout << "9 0 red : " << color.red() << " black: " << color.black() << std::endl;
+    if (color.black() < color.red()){
+        color = img.pixel(4, height);
+        if (color.black() < color.red()){
+            color = img.pixel(width/2, (height/2) -1);
+            if (color.black() > color.red()){
+                return '0';
+            }
+        }
+        else
+            return '9';
+    }
+    color = img.pixel(1, height/2 -1);
+    if (color.black() < color.red()){
+        color = img.pixel(2, height/2 -1);
+        if (color.black() < color.red()){
+            color = img.pixel(3, height/2 -1);
+            if (color.black() < color.red()){
+                color = img.pixel(4, height/2 -1);
+                if (color.black() < color.red()){
+                    color = img.pixel(0, 3);
+                    if (color.black() < color.red()){
+                        return '6';
+                    }
+                    else
+                        return '8';
+                }
+            }
+        }
+    }
+    
+    return 'N';
+}
+
+QPixmap Screenshot::color_letter(QPixmap pixmap) {
+    int x = 0;
+    int count = 0;
+    int & ref_to_x = x;
+    char c;
+    std::string stack;
+    QImage img = pixmap.toImage();
+    QPixmap letre;
+    while (x < img.size().width()){
+        count++;
+        letre = take_letter(pixmap, ref_to_x);
+        std::cout << count << " eme nombre" << std::endl;
+        c = take_number(letre);
+
+        stack += c;
+        x++;
+        // if (count == 1)//recuperer le x eme nombre , prend en compte la virgule comme nb
+            // break;
+    }
+    int i = stack.size();
+    stack[i] = 0;
+    stack[i-1] = 0;
+    stack[i-2] = 0;
+    std::cout << "stack: " << stack << std::endl;
+    // pixmap = letre;
+    // letre = take_letter(pixmap, x);
+    // std::cout << "x: " << x << std::endl;
+    return pixmap;
+}
+
+QPixmap Screenshot::take_letter(QPixmap pixmap, int & x){
+    int y = 0;
+    bool in_color = false;
+    int haut = 0;
+    int bas = 0;
+    int droite = 0;
+    int gauche = 0;
+    QImage img = pixmap.toImage();
+    QRgb   red;
+
+    red = qRgb(255, 0 , 0);
+    while (x < img.size().width()){
+        y = 0;
+        in_color = false;
+        while (y < img.size().height()){
+            QColor color= img.pixel(x, y);
+            if (color.black() < color.green())
+            {
+                if (in_color == false)
+                    in_color = true;
+                img.setPixel(x, y, red);
+                if (haut > y || haut == 0)
+                    haut = y;
+                if (bas <= y)
+                    bas = y+1;
+            }
+            y++;
+        }
+        if (in_color == true && gauche > 0)
+            droite = x + 1;
+        if (in_color == true && gauche == 0)
+            gauche = x;
+        if (droite > 0 && gauche > 0 && haut > 0 && bas > 0 && in_color == false)
+            break;
+       x++;
+    }
+    // std::cout << "haut: " << haut << " bas: " << bas << " gauche: " << gauche << " droite: " << droite << std::endl;
+    pixmap = pixmap.fromImage(img.copy(gauche, haut , droite - gauche, bas - haut));//recupere la 1ere letre
+    // pixmap = pixmap.fromImage(img.copy());//recupere tous le montant
+    return pixmap;
+}
+
+/* affiche un carre de 10*10 pixel noir a l'endroit ou il y as les carte*/
 void Screenshot::put_pixel_black(){
     QRgb    value;
     QPixmap pixmap = originalPixmap;
@@ -434,8 +603,9 @@ void Screenshot::put_small_screen(){
         qApp->beep();
     originalPixmap = QPixmap();
 
-    originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/tracker/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_petite2.png");//mettre l'image dans build
-     // std::cout << hashPixmap(originalPixmap) << std::endl;
+    // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/tracker/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_petite2.png");//mettre l'image dans build
+    originalPixmap = QPixmap("table_petite2.png");
+    // std::cout << hashPixmap(originalPixmap) << std::endl;
     updateScreenshotLabel();
 
     newScreenshotButton->setDisabled(false);
@@ -449,7 +619,8 @@ void Screenshot::put_big_screen(){
         qApp->beep();
     // originalPixmap = QPixmap();
 
-    originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/tracker/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grande2.png");//mettre l'image dans build
+    // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/tracker/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grande2.png");//mettre l'image dans build
+    originalPixmap = QPixmap("table_grande2.png");
     // std::cout << hashPixmap(originalPixmap) << std::endl;
     updateScreenshotLabel();
 
@@ -523,6 +694,13 @@ void Screenshot::createButtonsLayout()
     QPushButton *smallscreen = createButton(tr("Small screen"), this, SLOT(put_small_screen()));
     QPushButton *bigScreen = createButton(tr("Big screen"), this, SLOT(put_big_screen()));
     QPushButton *stackPlayer1 = createButton(tr("stack player 1"), this, SLOT(put_stack_player_1()));//ligne 71
+    QPushButton *stackPlayer2 = createButton(tr("stack player 2"), this, SLOT(put_stack_player_2()));//ligne 71
+    QPushButton *stackPlayer3 = createButton(tr("stack player 3"), this, SLOT(put_stack_player_3()));//ligne 71
+    QPushButton *stackPlayer4 = createButton(tr("stack player 4"), this, SLOT(put_stack_player_4()));//ligne 71
+    QPushButton *stackPlayer5 = createButton(tr("stack player 5"), this, SLOT(put_stack_player_5()));//ligne 71
+    QPushButton *stackPlayer6 = createButton(tr("stack player 6"), this, SLOT(put_stack_player_6()));//ligne 71
+    QPushButton *stackPlayer7 = createButton(tr("stack player 7"), this, SLOT(put_stack_player_7()));//ligne 71
+    QPushButton *stackPlayer8 = createButton(tr("stack player 8"), this, SLOT(put_stack_player_8()));//ligne 71
     putPixelBlack = createButton(tr("put pixel black"), this, SLOT(put_pixel_black()));
     quitScreenshotButton = createButton(tr("Quit"), this, SLOT(close()));
 
@@ -535,6 +713,13 @@ void Screenshot::createButtonsLayout()
     buttonsLayout->addWidget(smallscreen);
     buttonsLayout->addWidget(bigScreen);
     buttonsLayout->addWidget(stackPlayer1);
+    buttonsLayout->addWidget(stackPlayer2);
+    buttonsLayout->addWidget(stackPlayer3);
+    buttonsLayout->addWidget(stackPlayer4);
+    buttonsLayout->addWidget(stackPlayer5);
+    buttonsLayout->addWidget(stackPlayer6);
+    buttonsLayout->addWidget(stackPlayer7);
+    buttonsLayout->addWidget(stackPlayer8);
     buttonsLayout->addWidget(quitScreenshotButton);
 }
 

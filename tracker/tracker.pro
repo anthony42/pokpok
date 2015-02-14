@@ -4,8 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui\
-			widgets
+QT	+= core gui\
+		widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,10 +13,10 @@ TARGET = tracker
 TEMPLATE = app
 
 SOURCES	+= main.cpp\
-        mainwindow.cpp\
-        screenshot.cpp
+		mainwindow.cpp\
+		screenshot.cpp
 
 HEADERS	+= mainwindow.h\
-                screenshot.hpp
+		screenshot.hpp
 
 FORMS	+= mainwindow.ui
