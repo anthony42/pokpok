@@ -1,4 +1,3 @@
-
 #include <QtWidgets>
 
 #include "screenshot.hpp"
@@ -18,6 +17,7 @@ Screenshot::Screenshot()
     mainLayout->addWidget(screenshotLabel);
     mainLayout->addWidget(optionsGroupBox);
     mainLayout->addLayout(buttonsLayout);
+    mainLayout->addLayout(buttonsLayout2);
     setLayout(mainLayout);
 
     shootScreen();
@@ -367,26 +367,24 @@ char    Screenshot::take_number(QPixmap letre){
         else
             return '9';
     }
-    color = img.pixel(1, height/2 -1);
-    if (color.black() < color.red()){
-        color = img.pixel(2, height/2 -1);
-        if (color.black() < color.red()){
-            color = img.pixel(3, height/2 -1);
-            if (color.black() < color.red()){
-                color = img.pixel(4, height/2 -1);
-                if (color.black() < color.red()){
-                    color = img.pixel(0, 3);
-                    if (color.black() < color.red()){
-                        return '6';
-                    }
-                    else
-                        return '8';
-                }
-            }
-        }
+    color = img.pixel(1, 4);
+    if (color.black() > color.red()){
+        return '3';
     }
-    
-    return 'N';
+
+    int i = width;
+    int j = 1;
+    while (j < height){
+        color = img.pixel(i, j);
+        if (color.black() > color.red()){
+            break;
+        }
+        j++;
+    }
+    if (j > 3){
+        return '8';
+    }
+    return '6';
 }
 
 QPixmap Screenshot::color_letter(QPixmap pixmap) {
@@ -583,6 +581,42 @@ void Screenshot::put_pixel_black(){
         show();
 }
 
+void Screenshot::take_board(){
+    QPixmap pixmap = originalPixmap;
+    QImage img = pixmap.toImage();
+
+    int width = img.size().width();
+    int height = img.size().height();
+    pixmap = pixmap.fromImage(img.copy(width/3, height/3, 20, 25));
+    img = pixmap.toImage();
+    
+    width = img.size().width();
+    height = img.size().height();
+
+    QRgb    value;
+    value = qRgb(255, 0, 0);
+    int x = 0;
+    int y = 0;
+    while (x < img.size().width()){
+        y = 0;
+        while (y < img.size().height()){
+            QColor color = img.pixel(x, y);
+            std::cout << "red : " << color.red() << " green : " << color.green() << " blue : " << color.blue() << std::endl;
+            if (color.red() > 165 && color.green() > 165 && color.blue() > 165)
+                img.setPixel(x, y, value);
+            y++;
+        }
+        x++; 
+    }
+    std::cout << " width : " << width << " height : " << height << std::endl;
+    pixmap = pixmap.fromImage(img);
+    // pixmap = pixmap.fromImage(img.copy(width/3, height/3, 20, 25));
+    originalPixmap = QPixmap(pixmap);
+    updateScreenshotLabel();
+    if (hideThisWindowCheckBox->isChecked())
+        show();
+}
+
 /*sauvegarde le dernier screenshot pris*/
 void Screenshot::saveScreenshot()
 {
@@ -603,8 +637,8 @@ void Screenshot::put_small_screen(){
         qApp->beep();
     originalPixmap = QPixmap();
 
-    // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/tracker/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_petite2.png");//mettre l'image dans build
-    originalPixmap = QPixmap("table_petite2.png");
+    originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grande2.png");//mettre l'image dans build
+    // originalPixmap = QPixmap("table_petite2.png");
     // std::cout << hashPixmap(originalPixmap) << std::endl;
     updateScreenshotLabel();
 
@@ -619,8 +653,8 @@ void Screenshot::put_big_screen(){
         qApp->beep();
     // originalPixmap = QPixmap();
 
-    // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/tracker/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grande2.png");//mettre l'image dans build
-    originalPixmap = QPixmap("table_grande2.png");
+    originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grand_nombre.png");//mettre l'image dans build
+    // originalPixmap = QPixmap("table_grande2.png");
     // std::cout << hashPixmap(originalPixmap) << std::endl;
     updateScreenshotLabel();
 
@@ -685,26 +719,28 @@ void Screenshot::createOptionsGroupBox()
     optionsGroupBox->setLayout(optionsGroupBoxLayout);
 }
 
-/*creer les bouton new screenshot, sava, print pixel et quit*/
+/*creer les boutons*/
 void Screenshot::createButtonsLayout()
 {
     newScreenshotButton = createButton(tr("New Screenshot"), this, SLOT(newScreenshot()));
     saveScreenshotButton = createButton(tr("Save Screenshot"), this, SLOT(saveScreenshot()));
     QPushButton *printColorPixel = createButton(tr("print color pixel"), this, SLOT(print_color_pixel2()));
-    QPushButton *smallscreen = createButton(tr("Small screen"), this, SLOT(put_small_screen()));
-    QPushButton *bigScreen = createButton(tr("Big screen"), this, SLOT(put_big_screen()));
-    QPushButton *stackPlayer1 = createButton(tr("stack player 1"), this, SLOT(put_stack_player_1()));//ligne 71
-    QPushButton *stackPlayer2 = createButton(tr("stack player 2"), this, SLOT(put_stack_player_2()));//ligne 71
-    QPushButton *stackPlayer3 = createButton(tr("stack player 3"), this, SLOT(put_stack_player_3()));//ligne 71
-    QPushButton *stackPlayer4 = createButton(tr("stack player 4"), this, SLOT(put_stack_player_4()));//ligne 71
-    QPushButton *stackPlayer5 = createButton(tr("stack player 5"), this, SLOT(put_stack_player_5()));//ligne 71
-    QPushButton *stackPlayer6 = createButton(tr("stack player 6"), this, SLOT(put_stack_player_6()));//ligne 71
-    QPushButton *stackPlayer7 = createButton(tr("stack player 7"), this, SLOT(put_stack_player_7()));//ligne 71
-    QPushButton *stackPlayer8 = createButton(tr("stack player 8"), this, SLOT(put_stack_player_8()));//ligne 71
+    QPushButton *smallscreen = createButton(tr("screen 1"), this, SLOT(put_small_screen()));
+    QPushButton *bigScreen = createButton(tr("screen 2"), this, SLOT(put_big_screen()));
+    QPushButton *stackPlayer1 = createButton(tr("stack player 1"), this, SLOT(put_stack_player_1()));
+    QPushButton *stackPlayer2 = createButton(tr("stack player 2"), this, SLOT(put_stack_player_2()));
+    QPushButton *stackPlayer3 = createButton(tr("stack player 3"), this, SLOT(put_stack_player_3()));
+    QPushButton *stackPlayer4 = createButton(tr("stack player 4"), this, SLOT(put_stack_player_4()));
+    QPushButton *stackPlayer5 = createButton(tr("stack player 5"), this, SLOT(put_stack_player_5()));
+    QPushButton *stackPlayer6 = createButton(tr("stack player 6"), this, SLOT(put_stack_player_6()));
+    QPushButton *stackPlayer7 = createButton(tr("stack player 7"), this, SLOT(put_stack_player_7()));
+    QPushButton *stackPlayer8 = createButton(tr("stack player 8"), this, SLOT(put_stack_player_8()));
+    QPushButton *takeBoard = createButton(tr("take card in board"), this, SLOT(take_board()));
     putPixelBlack = createButton(tr("put pixel black"), this, SLOT(put_pixel_black()));
     quitScreenshotButton = createButton(tr("Quit"), this, SLOT(close()));
 
     buttonsLayout = new QHBoxLayout;
+    buttonsLayout2 = new QHBoxLayout;
     buttonsLayout->addStretch();
     buttonsLayout->addWidget(newScreenshotButton);
     buttonsLayout->addWidget(saveScreenshotButton);
@@ -712,14 +748,15 @@ void Screenshot::createButtonsLayout()
     buttonsLayout->addWidget(putPixelBlack);
     buttonsLayout->addWidget(smallscreen);
     buttonsLayout->addWidget(bigScreen);
-    buttonsLayout->addWidget(stackPlayer1);
-    buttonsLayout->addWidget(stackPlayer2);
-    buttonsLayout->addWidget(stackPlayer3);
-    buttonsLayout->addWidget(stackPlayer4);
-    buttonsLayout->addWidget(stackPlayer5);
-    buttonsLayout->addWidget(stackPlayer6);
-    buttonsLayout->addWidget(stackPlayer7);
-    buttonsLayout->addWidget(stackPlayer8);
+    buttonsLayout->addWidget(takeBoard);
+    buttonsLayout2->addWidget(stackPlayer1);
+    buttonsLayout2->addWidget(stackPlayer2);
+    buttonsLayout2->addWidget(stackPlayer3);
+    buttonsLayout2->addWidget(stackPlayer4);
+    buttonsLayout2->addWidget(stackPlayer5);
+    buttonsLayout2->addWidget(stackPlayer6);
+    buttonsLayout2->addWidget(stackPlayer7);
+    buttonsLayout2->addWidget(stackPlayer8);
     buttonsLayout->addWidget(quitScreenshotButton);
 }
 

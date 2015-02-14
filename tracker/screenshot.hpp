@@ -44,6 +44,7 @@ private slots:
     void put_stack_player_6();
     void put_stack_player_7();
     void put_stack_player_8();
+    void take_board();
 
 private:
 
@@ -71,6 +72,7 @@ private:
     QVBoxLayout *mainLayout;
     QGridLayout *optionsGroupBoxLayout;
     QHBoxLayout *buttonsLayout;
+    QHBoxLayout *buttonsLayout2;
 };
 
 #endif // SCREENSHOT_H
