@@ -7,6 +7,8 @@
 #include <QPixmap>
 #include <QWidget>
 #include <QRgb>
+#include <windows.h>
+#include <stdio.h>
 
 class QCheckBox;
 class QGridLayout;
@@ -34,8 +36,9 @@ private slots:
     void shootScreen();
     void updateCheckBox();
     void put_pixel_black();
-    void put_big_screen();
-    void put_small_screen();
+    void put_screen_1();
+    void put_screen_2();
+    void put_screen_3();
     void put_stack_player_1();
     void put_stack_player_2();
     void put_stack_player_3();

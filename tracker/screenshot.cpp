@@ -27,7 +27,7 @@ Screenshot::Screenshot()
     resize(800, 600);
 }
 
-/*creer hash pixel par pixel*/
+/*creer hash de l'image pixel par pixel*/
 qint32 Screenshot::hashPixmap(QPixmap pix)
 {
     QImage image = pix.toImage();
@@ -325,66 +325,53 @@ char    Screenshot::take_number(QPixmap letre){
     if (height < 7)
         return ',';
     color = img.pixel(width, 0);//pixel en haut a droite
-    // std::cout << " 1 5 7 red : " << color.red() << " black: " << color.black() << std::endl;
     if (color.black() < color.red()){//possibiliter 1 5 7
         color = img.pixel(width, height);//en bas a droite
-        // std::cout << " 1 red : " << color.red() << " black: " << color.black() << std::endl;
         if (color.black() < color.red()){
             return '1';
         }
         color = img.pixel(0, height-1);//en bas a gauche remonter de 1 px
-        // std::cout << " 5 7 red : " << color.red() << " black: " << color.black() << std::endl;
-        if (color.black() < color.red()){
-            return '5';
-        }
-        else
+        if (color.black() > color.red()){
             return '7';
+        }
     }
     color = img.pixel(width, height);//en bas a droite
-    // std::cout << " 2 red : " << color.red() << " black: " << color.black() << std::endl;
     if (color.black() < color.red()){
-        return '2';
-    }
-    color = img.pixel(width/2, (height/2) -2);
-    // std::cout << " 8 3 4 red : " << color.red() << " black: " << color.black() << std::endl;
-    if (color.black() < color.red()){
-        color = img.pixel(0, 1);
-        // std::cout << " 8 3 red : " << color.red() << " black: " << color.black() << std::endl;
-        if (color.black() > color.red()){
-            return '4';
-        }
-    }
-    color = img.pixel(width, 4);
-    // std::cout << "9 0 red : " << color.red() << " black: " << color.black() << std::endl;
-    if (color.black() < color.red()){
-        color = img.pixel(4, height);
-        if (color.black() < color.red()){
-            color = img.pixel(width/2, (height/2) -1);
-            if (color.black() > color.red()){
-                return '0';
-            }
-        }
-        else
-            return '9';
-    }
-    color = img.pixel(1, 4);
-    if (color.black() > color.red()){
-        return '3';
+            return '2';
     }
 
-    int i = width;
-    int j = 1;
-    while (j < height){
-        color = img.pixel(i, j);
-        if (color.black() > color.red()){
-            break;
+    color = img.pixel(width, 4);
+    if (color.black() < color.red()){
+        color = img.pixel(0, height - 4);
+        if (color.black() < color.red()){
+            color = img.pixel(0, (height/3)*2);
+            if (color.black() < color.red()){
+                color = img.pixel(width/2, height/2);
+                if (color.black() < color.red()){
+                    return '8';
+                }
+                else {
+                    return '0';
+                }
+            }
         }
-        j++;
+        else{
+            color = img.pixel(1, 4);
+            if (color.black() > color.red()){
+                return '3';
+            }
+            return '9';
+        }
     }
-    if (j > 3){
-        return '8';
+    color = img.pixel(0, height-4);
+    if (color.black() > color.red()){
+        return '5';
     }
-    return '6';
+    color = img.pixel(width/2, 0);
+    if (color.black() < color.red()){
+        return '6';
+    }
+    return '4';
 }
 
 QPixmap Screenshot::color_letter(QPixmap pixmap) {
@@ -587,9 +574,12 @@ void Screenshot::take_board(){
 
     int width = img.size().width();
     int height = img.size().height();
-    pixmap = pixmap.fromImage(img.copy(width/3, height/3, 20, 25));
+    //taille dune carte 69width 98height
+    //35width 38 height pour avoir le chifre du milieu. ajouter 20 width et 35 height
+    //+69 + 8 pour decaler de carte 69 width et 8 pour ecart entre les carte
+    pixmap = pixmap.fromImage(img.copy(((width/3+8)+20)+69+8, ((height/3)+30), 35, 60));
     img = pixmap.toImage();
-    
+
     width = img.size().width();
     height = img.size().height();
 
@@ -597,13 +587,14 @@ void Screenshot::take_board(){
     value = qRgb(255, 0, 0);
     int x = 0;
     int y = 0;
-    while (x < img.size().width()){
+    while (x < width){
         y = 0;
-        while (y < img.size().height()){
+        while (y < height){
             QColor color = img.pixel(x, y);
-            std::cout << "red : " << color.red() << " green : " << color.green() << " blue : " << color.blue() << std::endl;
-            if (color.red() > 165 && color.green() > 165 && color.blue() > 165)
+            // std::cout << "red : " << color.red() << " green : " << color.green() << " blue : " << color.blue() << std::endl;
+            if (color.red() > 205 && color.green() > 205 && color.blue() > 205){
                 img.setPixel(x, y, value);
+            }
             y++;
         }
         x++; 
@@ -631,14 +622,42 @@ void Screenshot::saveScreenshot()
         originalPixmap.save(fileName, format.toLatin1().constData());
 }
 
-/*affiche la petite table*/
-void Screenshot::put_small_screen(){
+/*affiche une image*/
+void Screenshot::put_screen_1(){
     if (delaySpinBox->value() != 0)
         qApp->beep();
     originalPixmap = QPixmap();
 
-    originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grande2.png");//mettre l'image dans build
-    // originalPixmap = QPixmap("table_petite2.png");
+    // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grande2.png");//mettre l'image dans build
+    originalPixmap = QPixmap("grande1.png");
+    // std::cout << hashPixmap(originalPixmap) << std::endl;
+    QImage img = originalPixmap.toImage();
+    if (img.size().width() < 940){
+        std::cout << "table trop petite" << std::endl;
+        exit(-1);
+    }
+    std::cout << "small height : " << img.size().height() << " width : " << img.size().width() << std::endl;
+    updateScreenshotLabel();
+
+    newScreenshotButton->setDisabled(false);
+    if (hideThisWindowCheckBox->isChecked())
+        show();
+}
+
+/*affiche une image*/
+void Screenshot::put_screen_2(){
+    if (delaySpinBox->value() != 0)
+        qApp->beep();
+    // originalPixmap = QPixmap();
+
+    // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grand_nombre.png");//mettre l'image dans build
+    originalPixmap = QPixmap("grande3.png");
+    QImage img = originalPixmap.toImage();
+    if (img.size().width() < 940){
+        std::cout << "table trop petite" << std::endl;
+        exit(0);
+    }
+    std::cout << "big height : " << img.size().height() << " width : " << img.size().width() << std::endl;
     // std::cout << hashPixmap(originalPixmap) << std::endl;
     updateScreenshotLabel();
 
@@ -647,14 +666,20 @@ void Screenshot::put_small_screen(){
         show();
 }
 
-/*affiche la grande table*/
-void Screenshot::put_big_screen(){
+/*affiche une image*/
+void Screenshot::put_screen_3(){
     if (delaySpinBox->value() != 0)
         qApp->beep();
     // originalPixmap = QPixmap();
 
-    originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grand_nombre.png");//mettre l'image dans build
-    // originalPixmap = QPixmap("table_grande2.png");
+    // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grand_nombre.png");//mettre l'image dans build
+    originalPixmap = QPixmap("table_board_full.png");
+    QImage img = originalPixmap.toImage();
+    if (img.size().width() < 940){
+        std::cout << "table trop petite" << std::endl;
+        exit(0);
+    }
+    std::cout << "big height : " << img.size().height() << " width : " << img.size().width() << std::endl;
     // std::cout << hashPixmap(originalPixmap) << std::endl;
     updateScreenshotLabel();
 
@@ -671,23 +696,41 @@ void Screenshot::shootScreen()
         qApp->beep();
     originalPixmap = QPixmap(); // clear image for low memory situations
                                 // on embedded devices.
-   
+ 
+    QDesktopWidget  widget;//je c plus pk javai ;is ca :D
+
+/*****************************************************/
+    // HWND hWnd = 0;
+    // HWND cur = GetForegroundWindow();//recuperer le handle de la fenetre active
+    // std::cout << "nombre de fenetre " << cur << std::endl;//affiche un nombre en hexa
+    // hWnd = cur;
+    // wchar_t name[100];
+    // GetClassName(hWnd, name, 100);//affiche que une seul lettre pour name, je c pas pourquoi 
+    // std::cout << hWnd << " " << name << std::endl;
+
+    // HWND hMediaplayer = FindWindow("PokerStars Lobby", NULL);//marche pas pb avec le char*, a tester 
+    // std::cout << "nombre de fenetre " << hMediaplayer << std::endl;;
+/*****************************************************/
+
     /*recuperation du bureau. ajouter id de la fenetre dans winId, pour recup uniquement celle la*/
    QScreen *screen = QGuiApplication::primaryScreen();
    if (screen)
        originalPixmap = screen->grabWindow(QApplication::desktop()->winId());//on peut rajouter pos x, pos y, width, height apres winid(),
 
-    /*recuperer image*/
-    // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/tracker/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_petite2.png");//mettre l'image dans build
+   /*verifie que la table soit pas trop petite sinn pb pour lire les nombre*/
+    QImage img = originalPixmap.toImage();
+    if (img.size().width() < 940){
+        std::cout << "table trop petite" << std::endl;
+        exit(0);
+    }
 
-    updateScreenshotLabel();
-
+    updateScreenshotLabel();//met a jour l'image
     newScreenshotButton->setDisabled(false);
-    if (hideThisWindowCheckBox->isChecked())
-        show();
+    if (hideThisWindowCheckBox->isChecked())//si le bouton hide window est cocher
+        show();//afficher ce qu'il y as dans originalPixmap
 }
 
-/*permet de hide (fonctionne pas encor, oup as compris :D)*/
+/*cache la fenetre pendant le delai du screenshot*/
 void Screenshot::updateCheckBox()
 {
     if (delaySpinBox->value() == 0) {
@@ -698,7 +741,7 @@ void Screenshot::updateCheckBox()
     }
 }
 
-/*affiche l'image et creer le bouton hide*/
+/*crer la le widget avec delai et le bouton hide window*/
 void Screenshot::createOptionsGroupBox()
 {
     optionsGroupBox = new QGroupBox(tr("Options"));
@@ -710,6 +753,7 @@ void Screenshot::createOptionsGroupBox()
 
     delaySpinBoxLabel = new QLabel(tr("Screenshot Delay:"));
 
+    /*sertv a ne pas afficher la fenetre pendant le delai du screenshot*/
     hideThisWindowCheckBox = new QCheckBox(tr("Hide This Window"));
 
     optionsGroupBoxLayout = new QGridLayout;
@@ -725,8 +769,9 @@ void Screenshot::createButtonsLayout()
     newScreenshotButton = createButton(tr("New Screenshot"), this, SLOT(newScreenshot()));
     saveScreenshotButton = createButton(tr("Save Screenshot"), this, SLOT(saveScreenshot()));
     QPushButton *printColorPixel = createButton(tr("print color pixel"), this, SLOT(print_color_pixel2()));
-    QPushButton *smallscreen = createButton(tr("screen 1"), this, SLOT(put_small_screen()));
-    QPushButton *bigScreen = createButton(tr("screen 2"), this, SLOT(put_big_screen()));
+    QPushButton *screen1 = createButton(tr("screen 1"), this, SLOT(put_screen_1()));
+    QPushButton *screen2 = createButton(tr("screen 2"), this, SLOT(put_screen_2()));
+    QPushButton *screen3 = createButton(tr("screen 3"), this, SLOT(put_screen_3()));
     QPushButton *stackPlayer1 = createButton(tr("stack player 1"), this, SLOT(put_stack_player_1()));
     QPushButton *stackPlayer2 = createButton(tr("stack player 2"), this, SLOT(put_stack_player_2()));
     QPushButton *stackPlayer3 = createButton(tr("stack player 3"), this, SLOT(put_stack_player_3()));
@@ -746,8 +791,9 @@ void Screenshot::createButtonsLayout()
     buttonsLayout->addWidget(saveScreenshotButton);
     buttonsLayout->addWidget(printColorPixel);
     buttonsLayout->addWidget(putPixelBlack);
-    buttonsLayout->addWidget(smallscreen);
-    buttonsLayout->addWidget(bigScreen);
+    buttonsLayout->addWidget(screen1);
+    buttonsLayout->addWidget(screen2);
+    buttonsLayout->addWidget(screen3);
     buttonsLayout->addWidget(takeBoard);
     buttonsLayout2->addWidget(stackPlayer1);
     buttonsLayout2->addWidget(stackPlayer2);
