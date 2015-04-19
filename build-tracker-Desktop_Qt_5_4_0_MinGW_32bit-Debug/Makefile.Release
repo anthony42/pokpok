@@ -220,7 +220,7 @@ release/moc_mainwindow.cpp: ../../../../Qt/5.4/mingw491_32/include/QtWidgets/QMa
 		../../../../Qt/5.4/mingw491_32/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.4/mingw491_32/include/QtGui/qicon.h \
 		../tracker/mainwindow.h
-	C:\Qt\5.4\mingw491_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.4/mingw491_32/mkspecs/win32-g++ -I"C:/Users/nini/ia poker/tracker" -IC:/Qt/5.4/mingw491_32/include -IC:/Qt/5.4/mingw491_32/include/QtWidgets -IC:/Qt/5.4/mingw491_32/include/QtGui -IC:/Qt/5.4/mingw491_32/include/QtCore -I. ..\tracker\mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\5.4\mingw491_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.4/mingw491_32/mkspecs/win32-g++ -IC:/Users/nini/pokpok/tracker -IC:/Qt/5.4/mingw491_32/include -IC:/Qt/5.4/mingw491_32/include/QtWidgets -IC:/Qt/5.4/mingw491_32/include/QtGui -IC:/Qt/5.4/mingw491_32/include/QtCore -I. ..\tracker\mainwindow.h -o release\moc_mainwindow.cpp
 
 release/moc_screenshot.cpp: ../../../../Qt/5.4/mingw491_32/include/QtGui/QPixmap \
 		../../../../Qt/5.4/mingw491_32/include/QtGui/qpixmap.h \
@@ -327,7 +327,7 @@ release/moc_screenshot.cpp: ../../../../Qt/5.4/mingw491_32/include/QtGui/QPixmap
 		../../../../Qt/5.4/mingw491_32/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.4/mingw491_32/include/QtGui/QRgb \
 		../tracker/screenshot.hpp
-	C:\Qt\5.4\mingw491_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.4/mingw491_32/mkspecs/win32-g++ -I"C:/Users/nini/ia poker/tracker" -IC:/Qt/5.4/mingw491_32/include -IC:/Qt/5.4/mingw491_32/include/QtWidgets -IC:/Qt/5.4/mingw491_32/include/QtGui -IC:/Qt/5.4/mingw491_32/include/QtCore -I. ..\tracker\screenshot.hpp -o release\moc_screenshot.cpp
+	C:\Qt\5.4\mingw491_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.4/mingw491_32/mkspecs/win32-g++ -IC:/Users/nini/pokpok/tracker -IC:/Qt/5.4/mingw491_32/include -IC:/Qt/5.4/mingw491_32/include/QtWidgets -IC:/Qt/5.4/mingw491_32/include/QtGui -IC:/Qt/5.4/mingw491_32/include/QtCore -I. ..\tracker\screenshot.hpp -o release\moc_screenshot.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

@@ -374,6 +374,9 @@ char    Screenshot::take_number(QPixmap letre){
     return '4';
 }
 
+/*
+recupere la stack du joueur passer en param (le nombre en gros plan)
+*/
 QPixmap Screenshot::color_letter(QPixmap pixmap) {
     int x = 0;
     int count = 0;
@@ -385,7 +388,7 @@ QPixmap Screenshot::color_letter(QPixmap pixmap) {
     while (x < img.size().width()){
         count++;
         letre = take_letter(pixmap, ref_to_x);
-        std::cout << count << " eme nombre" << std::endl;
+        // std::cout << count << " eme nombre" << std::endl;
         c = take_number(letre);
 
         stack += c;
@@ -404,6 +407,10 @@ QPixmap Screenshot::color_letter(QPixmap pixmap) {
     return pixmap;
 }
 
+/*
+decoupe un nombre corespond au jeton en partent de x(horizontal)
+retourn juste 1 chifre parmis le nombre
+*/
 QPixmap Screenshot::take_letter(QPixmap pixmap, int & x){
     int y = 0;
     bool in_color = false;
@@ -568,40 +575,74 @@ void Screenshot::put_pixel_black(){
         show();
 }
 
+// QImage Screenshot::recup_nombre_sur_les_carte(QImage img){
+//     QImage image;
+
+
+// }
+
 void Screenshot::take_board(){
     QPixmap pixmap = originalPixmap;
-    QImage img = pixmap.toImage();
+    QImage image = pixmap.toImage();
+    QImage img;
+    std::vector<QImage> v_image;
 
-    int width = img.size().width();
-    int height = img.size().height();
+    int width = image.size().width();
+    int height = image.size().height();
+
     //taille dune carte 69width 98height
     //35width 38 height pour avoir le chifre du milieu. ajouter 20 width et 35 height
-    //+69 + 8 pour decaler de carte 69 width et 8 pour ecart entre les carte
-    pixmap = pixmap.fromImage(img.copy(((width/3+8)+20)+69+8, ((height/3)+30), 35, 60));
-    img = pixmap.toImage();
-
-    width = img.size().width();
-    height = img.size().height();
+    //+69 +8 pour le 1er et +7 pour decaler de carte 69 width et 8 pour ecart entre les carte
+    //+69+8+69+7+69+7+69+7
+    pixmap = pixmap.fromImage(image.copy((width/3)+((width*2.48227)/100), (height/3)+((height*3.5594)/100), 38, 65/*height*/));
 
     QRgb    value;
+    int w;
+    int h;
+    int maxcard = 0;
+    int maxtmp = 0;
     value = qRgb(255, 0, 0);
-    int x = 0;
-    int y = 0;
-    while (x < width){
-        y = 0;
-        while (y < height){
-            QColor color = img.pixel(x, y);
-            // std::cout << "red : " << color.red() << " green : " << color.green() << " blue : " << color.blue() << std::endl;
-            if (color.red() > 205 && color.green() > 205 && color.blue() > 205){
-                img.setPixel(x, y, value);
-            }
-            y++;
+    int decal = ((width*6.73759)/100);//69+7
+    int i = 0;
+    while (i < 1){
+        if (i == 1)
+            pixmap = pixmap.fromImage(image.copy((width/3)+((width*2.48227)/100)+((width*6.73759)/100)+1, ((height/3)+((height*3.7594)/100)), 35, 60));
+        else if (i > 1){
+            if (width > 1280)
+                pixmap = pixmap.fromImage(image.copy(width/3+(((width*2.48227)/100))+(((width*6.73759)/100)*i)+((width*0.50)/100)+1, ((height/3)+((height*3.7594)/100)), 35, 60));
+            else if (width > 1200)
+                pixmap = pixmap.fromImage(image.copy(width/3+(((width*2.48227)/100))+(((width*6.73759)/100)*i)+((width*0.80)/100), ((height/3)+((height*3.7594)/100)), 35, 60));
+            else
+                pixmap = pixmap.fromImage(image.copy(width/3+(((width*2.48227)/100))+(((width*6.73759)/100)*i)+1, ((height/3)+((height*3.7594)/100)), 35, 60));
         }
-        x++; 
+                       
+        img = pixmap.toImage();
+        w = img.size().width();
+        h = img.size().height();
+
+        int x = 0;
+        int y = 0;
+        while (x < w){
+            y = 0;
+            while (y < h){
+                QColor color = img.pixel(x, y);
+                if (color.red() > 205 && color.green() > 205 && color.blue() > 205){
+                    maxcard++;
+                    img.setPixel(x, y, value);
+                }
+                y++;
+            }
+            x++;
+        }
+        maxtmp++;
+        if (maxtmp > maxcard)
+            break ;
+        v_image.push_back(img);
+        i++;
     }
-    std::cout << " width : " << width << " height : " << height << std::endl;
+    // recup_nombre_sur_les_carte(v_image);
+    // pixmap = pixmap.fromImage(image);
     pixmap = pixmap.fromImage(img);
-    // pixmap = pixmap.fromImage(img.copy(width/3, height/3, 20, 25));
     originalPixmap = QPixmap(pixmap);
     updateScreenshotLabel();
     if (hideThisWindowCheckBox->isChecked())
@@ -629,14 +670,15 @@ void Screenshot::put_screen_1(){
     originalPixmap = QPixmap();
 
     // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grande2.png");//mettre l'image dans build
-    originalPixmap = QPixmap("grande1.png");
+    originalPixmap = QPixmap("table_full_grandee5.png");
     // std::cout << hashPixmap(originalPixmap) << std::endl;
     QImage img = originalPixmap.toImage();
+    std::cout << "small height : " << img.size().height() << " width : " << img.size().width() << std::endl;
     if (img.size().width() < 940){
         std::cout << "table trop petite" << std::endl;
         exit(-1);
     }
-    std::cout << "small height : " << img.size().height() << " width : " << img.size().width() << std::endl;
+    
     updateScreenshotLabel();
 
     newScreenshotButton->setDisabled(false);
@@ -651,13 +693,14 @@ void Screenshot::put_screen_2(){
     // originalPixmap = QPixmap();
 
     // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grand_nombre.png");//mettre l'image dans build
-    originalPixmap = QPixmap("grande3.png");
+    originalPixmap = QPixmap("table_full_grandee3.png");
     QImage img = originalPixmap.toImage();
+    std::cout << "small height : " << img.size().height() << " width : " << img.size().width() << std::endl;
     if (img.size().width() < 940){
         std::cout << "table trop petite" << std::endl;
         exit(0);
     }
-    std::cout << "big height : " << img.size().height() << " width : " << img.size().width() << std::endl;
+    // std::cout << "big height : " << img.size().height() << " width : " << img.size().width() << std::endl;
     // std::cout << hashPixmap(originalPixmap) << std::endl;
     updateScreenshotLabel();
 
@@ -673,13 +716,14 @@ void Screenshot::put_screen_3(){
     // originalPixmap = QPixmap();
 
     // originalPixmap = QPixmap("/nfs/zfs-student-5/users/2013/aelola/perso/pokpok/build-tracker-Desktop_Qt_5_4_0_MinGW_32bit-Debug/table_grand_nombre.png");//mettre l'image dans build
-    originalPixmap = QPixmap("table_board_full.png");
+    originalPixmap = QPixmap("table_full_grandee4.png");
     QImage img = originalPixmap.toImage();
+    std::cout << "small height : " << img.size().height() << " width : " << img.size().width() << std::endl;
     if (img.size().width() < 940){
         std::cout << "table trop petite" << std::endl;
         exit(0);
     }
-    std::cout << "big height : " << img.size().height() << " width : " << img.size().width() << std::endl;
+    // std::cout << "big height : " << img.size().height() << " width : " << img.size().width() << std::endl;
     // std::cout << hashPixmap(originalPixmap) << std::endl;
     updateScreenshotLabel();
 

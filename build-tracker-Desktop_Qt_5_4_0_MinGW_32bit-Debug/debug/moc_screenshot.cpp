@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Screenshot_t {
-    QByteArrayData data[7];
-    char stringdata[87];
+    QByteArrayData data[20];
+    char stringdata[305];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,12 +35,31 @@ QT_MOC_LITERAL(2, 30, 0), // ""
 QT_MOC_LITERAL(3, 31, 13), // "newScreenshot"
 QT_MOC_LITERAL(4, 45, 14), // "saveScreenshot"
 QT_MOC_LITERAL(5, 60, 11), // "shootScreen"
-QT_MOC_LITERAL(6, 72, 14) // "updateCheckBox"
+QT_MOC_LITERAL(6, 72, 14), // "updateCheckBox"
+QT_MOC_LITERAL(7, 87, 15), // "put_pixel_black"
+QT_MOC_LITERAL(8, 103, 12), // "put_screen_1"
+QT_MOC_LITERAL(9, 116, 12), // "put_screen_2"
+QT_MOC_LITERAL(10, 129, 12), // "put_screen_3"
+QT_MOC_LITERAL(11, 142, 18), // "put_stack_player_1"
+QT_MOC_LITERAL(12, 161, 18), // "put_stack_player_2"
+QT_MOC_LITERAL(13, 180, 18), // "put_stack_player_3"
+QT_MOC_LITERAL(14, 199, 18), // "put_stack_player_4"
+QT_MOC_LITERAL(15, 218, 18), // "put_stack_player_5"
+QT_MOC_LITERAL(16, 237, 18), // "put_stack_player_6"
+QT_MOC_LITERAL(17, 256, 18), // "put_stack_player_7"
+QT_MOC_LITERAL(18, 275, 18), // "put_stack_player_8"
+QT_MOC_LITERAL(19, 294, 10) // "take_board"
 
     },
     "Screenshot\0print_color_pixel2\0\0"
     "newScreenshot\0saveScreenshot\0shootScreen\0"
-    "updateCheckBox"
+    "updateCheckBox\0put_pixel_black\0"
+    "put_screen_1\0put_screen_2\0put_screen_3\0"
+    "put_stack_player_1\0put_stack_player_2\0"
+    "put_stack_player_3\0put_stack_player_4\0"
+    "put_stack_player_5\0put_stack_player_6\0"
+    "put_stack_player_7\0put_stack_player_8\0"
+    "take_board"
 };
 #undef QT_MOC_LITERAL
 
@@ -50,7 +69,7 @@ static const uint qt_meta_data_Screenshot[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -58,13 +77,39 @@ static const uint qt_meta_data_Screenshot[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x08 /* Private */,
-       3,    0,   40,    2, 0x08 /* Private */,
-       4,    0,   41,    2, 0x08 /* Private */,
-       5,    0,   42,    2, 0x08 /* Private */,
-       6,    0,   43,    2, 0x08 /* Private */,
+       1,    0,  104,    2, 0x08 /* Private */,
+       3,    0,  105,    2, 0x08 /* Private */,
+       4,    0,  106,    2, 0x08 /* Private */,
+       5,    0,  107,    2, 0x08 /* Private */,
+       6,    0,  108,    2, 0x08 /* Private */,
+       7,    0,  109,    2, 0x08 /* Private */,
+       8,    0,  110,    2, 0x08 /* Private */,
+       9,    0,  111,    2, 0x08 /* Private */,
+      10,    0,  112,    2, 0x08 /* Private */,
+      11,    0,  113,    2, 0x08 /* Private */,
+      12,    0,  114,    2, 0x08 /* Private */,
+      13,    0,  115,    2, 0x08 /* Private */,
+      14,    0,  116,    2, 0x08 /* Private */,
+      15,    0,  117,    2, 0x08 /* Private */,
+      16,    0,  118,    2, 0x08 /* Private */,
+      17,    0,  119,    2, 0x08 /* Private */,
+      18,    0,  120,    2, 0x08 /* Private */,
+      19,    0,  121,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -84,6 +129,19 @@ void Screenshot::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->saveScreenshot(); break;
         case 3: _t->shootScreen(); break;
         case 4: _t->updateCheckBox(); break;
+        case 5: _t->put_pixel_black(); break;
+        case 6: _t->put_screen_1(); break;
+        case 7: _t->put_screen_2(); break;
+        case 8: _t->put_screen_3(); break;
+        case 9: _t->put_stack_player_1(); break;
+        case 10: _t->put_stack_player_2(); break;
+        case 11: _t->put_stack_player_3(); break;
+        case 12: _t->put_stack_player_4(); break;
+        case 13: _t->put_stack_player_5(); break;
+        case 14: _t->put_stack_player_6(); break;
+        case 15: _t->put_stack_player_7(); break;
+        case 16: _t->put_stack_player_8(); break;
+        case 17: _t->take_board(); break;
         default: ;
         }
     }
@@ -115,13 +173,13 @@ int Screenshot::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 18)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 18;
     }
     return _id;
 }

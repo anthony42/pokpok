@@ -1,8 +1,7 @@
 #ifndef SCREENSHOT_H
 #define SCREENSHOT_H
 
-#include "../tesseract-mingw-master/include/leptonica/allheaders.h"
-#include "../tesseract-mingw-master/include/tesseract/apitypes.h"
+
 #include <iostream>
 #include <QPixmap>
 #include <QWidget>
@@ -48,6 +47,7 @@ private slots:
     void put_stack_player_7();
     void put_stack_player_8();
     void take_board();
+    // void recup_nombre_sur_les_carte(std::vector<QImage> v);
 
 private:
 
